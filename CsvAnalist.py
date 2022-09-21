@@ -25,9 +25,19 @@ lable_20.grid(row=2, column=0, padx=10, pady=10, sticky='e')
 lable_21 = tk.Label(text='')
 lable_21.grid(row=2, column=1, sticky='w')
 
+qut = tk.Label(text='Выход')
+qut.grid(column=2, row=4)
+qut['bg'] = '#bf1fff'
+
 # creating outpot label with scrolling
 output_text = st(height=22, width=50)
 output_text.grid(row=3, column=1, padx=10, pady=10, sticky='w')
 output_text['bg'] = '#bfffff'
+
+# making knobs
+button_read=tk.Button(window, text='Прочитать файл')
+button_read.grid(row=4, column=1)
+tk.Button(qut, text="Выход", command=window.destroy).grid()
+
 
 window.mainloop()
