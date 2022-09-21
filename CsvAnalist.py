@@ -2,6 +2,8 @@ import tkinter as tk
 from tkinter.scrolledtext import ScrolledText as st
 from tkinter import messagebox as mb
 from tkinter import filedialog as fd
+import os
+import pandas as pd
 
 # creating MAIN window
 window = tk.Tk()
@@ -31,26 +33,39 @@ qut = tk.Label(text='Выход')
 qut.grid(column=2, row=4)
 qut['bg'] = '#bf1fff'
 
-# creating outpot label with scrolling
+# creating output label with scrolling
 output_text = st(height=22, width=50)
 output_text.grid(row=3, column=1, padx=10, pady=10, sticky='w')
 output_text['bg'] = '#bfffff'
 
+
 # insert fileopen dialog
 def do_dialog():
-    name = fd.askopenfilename()
-    return
+    my_dir = os.getcwd()
+    name = fd.askopenfilename(initialdir=my_dir)
+    return name
 
 
-# insert messagebox
+# PANDAS .CSV-file processing
+def pandas_read_csv(file_name):
+    df = pd.read_csv(file_name, header=None, sep=';')
+    cnt_rows = df.shape[0]
+    cnt_columns = df.shape[1]
+    lable_11['text'] = cnt_rows
+    lable_21['text'] = cnt_columns
+    return df
+
+
 def process_button():
-    do_dialog()
+    file_name = do_dialog()
+    lable_01['text'] = file_name
+    pandas_read_csv(file_name)
     mb.showinfo(title=None, message=" Готово ")
+
 
 # making knobs
 button_read = tk.Button(window, text='Прочитать файл', command=process_button)
 button_read.grid(row=4, column=1)
 tk.Button(qut, text="Выход", command=window.destroy).grid()
-
 
 window.mainloop()
