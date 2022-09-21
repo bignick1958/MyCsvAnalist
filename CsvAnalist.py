@@ -55,11 +55,22 @@ def pandas_read_csv(file_name):
     lable_21['text'] = cnt_columns
     return df
 
+# select rows and listing
+def get_column(df, column_ix):
+    cnt_rows = df.shape[0]
+    lst = []
+    for i in range(cnt_rows):
+        lst.append(df.iat[i, column_ix])
+    return lst
 
+# knob push processing
 def process_button():
     file_name = do_dialog()
     lable_01['text'] = file_name
-    pandas_read_csv(file_name)
+    df = pandas_read_csv(file_name)
+    lst = get_column(df, 0)
+    for item in lst:
+        output_text.insert(tk.END, str(item) + os.linesep)
     mb.showinfo(title=None, message=" Готово ")
 
 
