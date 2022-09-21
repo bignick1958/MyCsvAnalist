@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter.scrolledtext import ScrolledText as st
+from tkinter import messagebox as mb
 
 # creating MAIN window
 window = tk.Tk()
@@ -34,8 +35,12 @@ output_text = st(height=22, width=50)
 output_text.grid(row=3, column=1, padx=10, pady=10, sticky='w')
 output_text['bg'] = '#bfffff'
 
+# insert messagebox
+def process_button():
+    mb.showinfo(title=None, message=" Готово ")
+
 # making knobs
-button_read=tk.Button(window, text='Прочитать файл')
+button_read = tk.Button(window, text='Прочитать файл', command=process_button)
 button_read.grid(row=4, column=1)
 tk.Button(qut, text="Выход", command=window.destroy).grid()
 
