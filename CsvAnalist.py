@@ -24,5 +24,9 @@ lable_20.grid(row=2, column=0, padx=10, pady=10, sticky='e')
 lable_21= tk.Label(text='')
 lable_21.grid(row=2, column=1, sticky='w')
 
+# creating outpot label
+output_text = tk.Text(height=22, width=50)
+output_text.grid(row=3, column=0, padx=10, pady=10, sticky='w')
+output_text['bg']='#ffaff1'
 
 window.mainloop()
