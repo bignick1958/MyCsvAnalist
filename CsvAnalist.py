@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter.scrolledtext import ScrolledText as st
 from tkinter import messagebox as mb
+from tkinter import filedialog as fd
 
 # creating MAIN window
 window = tk.Tk()
@@ -35,8 +36,15 @@ output_text = st(height=22, width=50)
 output_text.grid(row=3, column=1, padx=10, pady=10, sticky='w')
 output_text['bg'] = '#bfffff'
 
+# insert fileopen dialog
+def do_dialog():
+    name = fd.askopenfilename()
+    return
+
+
 # insert messagebox
 def process_button():
+    do_dialog()
     mb.showinfo(title=None, message=" Готово ")
 
 # making knobs
